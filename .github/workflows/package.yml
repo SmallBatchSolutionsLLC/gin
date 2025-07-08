@@ -21,8 +21,8 @@ jobs:
         run: npm run build
       - name: Update Version
         run: |
-          commitMsg = $(git show -s --format=%s)
-          if [[ commitMsg -eq patch ]]; then
+          commitMsg=$(git show -s --format=%s)
+          if [[ $commitMsg -eq patch ]]; then
             echo "it's a patch!"
           fi
           npm --no-git-tag-version version patch -m "Upgrading to %s"
