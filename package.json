@@ -1,5 +1,5 @@
 {
-  "name": "gin",
+  "name": "@smallbatchsolutions/gin",
   "version": "1.0.0",
   "type": "commonjs",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "README.md"
   ],
   "author": "Small Batch Solutions",
-  "license": "ISC",
+  "license": "MIT",
   "description": "Simple bootstrapping of a node application",
   "devDependencies": {
     "@types/jest": "^30.0.0",
