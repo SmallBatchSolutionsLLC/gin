@@ -1,9 +1,8 @@
 name: Create Package
 
 on:
-  push:
-    branches: main
-  workflow_dispatch:
+  release:
+    types: [released]
 
 jobs:
   publish:
@@ -15,15 +14,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+          registry-url: "https://registry.npmjs.org/"
+
+      - name: Auth to NPM
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}"
+
       - name: Install Dependencies
         run: npm ci
       - name: Build package
         run: npm run build
       - name: Update Version
         run: |
-          npm --no-git-tag-version version patch -m "Upgrading to %s"
+          npm version ${{ github.event.release.name }}
       - name: Pack package
         run: npm pack
       - name: Publish package
-        run: |
-          echo 'this is where we would publish'
+        run: npm publish --access public
