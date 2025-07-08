@@ -21,7 +21,7 @@ jobs:
         run: npm pack
       - name: Test application
         run: |
-          npx ./smallbatchsolutions-gin@1.0.0.tgz create test-project
+          npx ./smallbatchsolutions-gin-1.0.0.tgz create test-project
           cd test-project
           npm start
           npm test
