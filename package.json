@@ -4,7 +4,10 @@
   "type": "commonjs",
   "main": "index.js",
   "bin": {
-    "gin": "./dist/gin.js"
+    "gin": "dist/gin.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "start": "ts-node src/gin.ts -- --create --name practices",
