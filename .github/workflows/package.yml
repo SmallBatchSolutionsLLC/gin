@@ -25,10 +25,27 @@ jobs:
           FIRST_WORD=$(echo "$COMMIT_MSG" | awk '{print $1}')
           echo "Last commit message was: $COMMIT_MSG"
           echo "First word was : $FIRST_WORD"
-          if [[ "$FIRST_WORD" -eq "patch" ]]; then
-            echo "it's a patch!"
+          ALLOWED_VERBS=("major" "minor" "patch")
+          IS_ALLOWED=false
+          for VERB in "${ALLOWED_VERBS[@]}"; do
+            if [[ "$FIRST_WORD" -eq "$VERB" ]]; then
+              IS_ALLOWED=true
+              break
+            fi
+          done
+          # if [[ "$FIRST_WORD" -eq "patch" ]]; then
+          #   echo "it's a patch!"
+          # fi
+          # if [[ "$FIRST_WORD" -eq "major" ]]; then
+          # fi
+          if $IS_ALLOWED; then
+            npm --no-git-tag-version version $FIRST_WORD -m "Upgrading to %s"
+          else
+            echo "Failed to specify a valid verb: choose major, minor, or patch"
+            exit 1
           fi
-          npm --no-git-tag-version version patch -m "Upgrading to %s"
+
+          # npm --no-git-tag-version version patch -m "Upgrading to %s"
       - name: Pack package
         run: npm pack
       - name: Publish package
