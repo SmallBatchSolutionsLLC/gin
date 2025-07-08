@@ -6,6 +6,9 @@
   "bin": {
     "gin": "dist/gin.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "ts-node src/gin.ts -- --create --name practices",
     "build": "rimraf dist && tsc"
