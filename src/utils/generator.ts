@@ -56,10 +56,12 @@ async function updatePackageJson(projectName: string): Promise<void> {
   );
 }
 
+function isWindows(): boolean {
+  return process.platform === "win32";
+}
+
 function getExecutionFunctionForOS(): (cmd: string) => Promise<void> {
-  return process.platform === "win32"
-    ? executeWindowsCommand
-    : executeLinuxCommand;
+  return isWindows() ? executeWindowsCommand : executeLinuxCommand;
 }
 
 async function setupDirectoryStructure(projectName: string): Promise<void> {
@@ -75,13 +77,15 @@ async function setupDirectoryStructure(projectName: string): Promise<void> {
 }
 
 async function installNpmPackages(projectName: string): Promise<void> {
-  const command = [
-    "",
+  let baseCommand = [
     `cd ${projectName}`,
     "npm install --save-dev typescript ts-node jest ts-jest @types/node @types/jest",
     "npx tsc --init",
     "npx ts-jest config:init",
   ].join(" && ");
+
+  // When changing directories as the first command in Windows, it needs to start with &&
+  const command = `${isWindows() ? ` && ` : ""}${baseCommand}`;
 
   const executionFunction = getExecutionFunctionForOS();
   await executionFunction(command);

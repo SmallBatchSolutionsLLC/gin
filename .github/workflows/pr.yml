@@ -14,3 +14,11 @@ jobs:
         run: npm ci
       - name: Build application
         run: npm run build
+      - name: Pack application
+        run: npm pack
+      - name: Test application
+        run: |
+          npx @smallbatchsoftware/gin create test-project
+          cd test-project
+          npm start
+          npm test
