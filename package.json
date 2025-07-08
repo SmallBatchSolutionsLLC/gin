@@ -1,5 +1,5 @@
 {
-  "name": "@smallbatchsolutions/gin",
+  "name": "smallbatchsolutions/gin",
   "version": "1.0.0",
   "type": "commonjs",
   "main": "index.js",
