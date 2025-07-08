@@ -1,0 +1,36 @@
+{
+  "name": "gin",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "index.js",
+  "bin": {
+    "gin": "./dist/gin.js"
+  },
+  "scripts": {
+    "start": "ts-node src/gin.ts -- --create --name practices",
+    "build": "rimraf dist && tsc"
+  },
+  "keywords": [
+    "bootstrap"
+  ],
+  "files": [
+    "./dist",
+    "README.md"
+  ],
+  "author": "Small Batch Solutions",
+  "license": "ISC",
+  "description": "Simple bootstrapping of a node application",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.10",
+    "jest": "^30.0.4",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "commander": "^14.0.0",
+    "tslib": "^2.8.1"
+  }
+}

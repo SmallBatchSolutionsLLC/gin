@@ -1,0 +1,16 @@
+name: "PR"
+
+on:
+  pull_request:
+    branches: main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build application
+        run: npm run build
