@@ -18,7 +18,7 @@ jobs:
           registry-url: "https://registry.npmjs.org/"
 
       - name: Auth to NPM
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}"
+        run: npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}"
 
       - name: Check login
         run: npm whoami
