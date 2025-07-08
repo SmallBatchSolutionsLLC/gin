@@ -12,10 +12,6 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: "Check if exists"
-        run: echo "My secret is ${SECRET:+[available]}"
-        env:
-          SECRET: ${{ secrets.NPM_AUTH_TOKEN }}
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
