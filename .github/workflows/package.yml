@@ -21,10 +21,11 @@ jobs:
         run: npm run build
       - name: Update Version
         run: |
-          commitMsg=$(git show -s --format=%s)
-          if [[ $commitMsg -eq patch ]]; then
-            echo "it's a patch!"
-          fi
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "Last commit message was: $COMMIT_MSG"
+          # if [[ $commitMsg -eq patch ]]; then
+          #   echo "it's a patch!"
+          # fi
           npm --no-git-tag-version version patch -m "Upgrading to %s"
       - name: Pack package
         run: npm pack
