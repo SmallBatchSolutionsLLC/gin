@@ -25,9 +25,9 @@ jobs:
           FIRST_WORD=$(echo "$COMMIT_MSG" | awk '{print $1}')
           echo "Last commit message was: $COMMIT_MSG"
           echo "First word was : $FIRST_WORD"
-          # if [[ "$commitMsg" -eq "patch" ]]; then
-          #   echo "it's a patch!"
-          # fi
+          if [[ "$FIRST_WORD" -eq "patch" ]]; then
+            echo "it's a patch!"
+          fi
           npm --no-git-tag-version version patch -m "Upgrading to %s"
       - name: Pack package
         run: npm pack
