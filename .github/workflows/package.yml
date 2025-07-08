@@ -26,7 +26,7 @@ jobs:
           ALLOWED_VERBS=("major" "minor" "patch")
           IS_ALLOWED=false
           for VERB in "${ALLOWED_VERBS[@]}"; do
-            if [[ "$FIRST_WORD" -eq "$VERB" ]]; then
+            if [[ "$FIRST_WORD" == "$VERB" ]]; then
               echo "equality was hit with $VERB"
               IS_ALLOWED=true
               break
