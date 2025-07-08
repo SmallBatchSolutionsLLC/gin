@@ -29,4 +29,4 @@ jobs:
       - name: Pack package
         run: npm pack
       - name: Publish package
-        run: npm publish --access public
+        run: npm publish --access public --verbose
