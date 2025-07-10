@@ -6,4 +6,7 @@ This tool helps scaffold a basic Node application with TypeScript and Jest confi
 
 ## Usage
 
-`npx @smallbatchsolutions/gin create <project-name>`
+```sh
+npm install -g @smallbatchsolutions/gin
+smallbatch-gin create <projectName>
+```
