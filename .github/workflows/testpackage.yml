@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v4
@@ -15,7 +15,7 @@ jobs:
       - name: Test Package
         run: |
           npm install @smallbatchsolutions/gin
-          @smallbatch/gin create testProject
+          smallbatch-gin create testProject
           cd testProject
           npm run start
           npm run test
