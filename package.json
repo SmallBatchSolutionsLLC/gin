@@ -4,7 +4,7 @@
   "type": "commonjs",
   "main": "index.js",
   "bin": {
-    "smallbatch/gin": "dist/gin.js"
+    "gin": "dist/gin.js"
   },
   "publishConfig": {
     "access": "public"
