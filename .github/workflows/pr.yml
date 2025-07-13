@@ -22,9 +22,19 @@ jobs:
         run: npm run build
       - name: Pack application
         run: npm pack
-      - name: Test application
+      - name: Test Project Creation
         run: |
-          npx ./smallbatchsolutions-gin-0.0.1.tgz create test-project
+          npx ./smallbatchsolutions-gin-0.0.1.tgz create project test-project
           cd test-project
           npm start
           npm test
+
+      - name: Test Library Creation
+        run: |
+          npx ./smallbatchsolutions-gin-0.0.1.tgz create project test-library
+          cd test-library
+          npm run build
+          npm test
+          npm start
+          npm pack
+          npx ./test-library-1.0.0.tgz
