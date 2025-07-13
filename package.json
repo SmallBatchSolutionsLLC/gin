@@ -10,7 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "ts-node src/gin.ts -- --create --name practices",
+    "start": "ts-node src/gin.ts",
     "build": "rimraf dist && tsc"
   },
   "keywords": [
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "commander": "^14.0.0",
+    "json5": "^2.2.3",
     "tslib": "^2.8.1"
   }
 }

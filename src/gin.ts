@@ -1,16 +1,29 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { main as generator } from "./utils/generator";
-
+import { main as projectGenerator } from "./generators/node-project";
+import { main as libraryGenerator } from "./generators/node-library";
 async function main(): Promise<void> {
   const program = new Command();
 
   program
     .command("create")
-    .description("Creates a template node project")
-    .argument("<projectName>", "name of project")
-    .action(async (projectName: string) => {
-      await generator(projectName);
+    .description("Creates a scaffolded application")
+    .argument("<type>", "type to create (project or library)")
+    .argument("<name>", "name of the application to create")
+    .action(async (type: string, name: string) => {
+      switch (type) {
+        case "library":
+          await libraryGenerator(name);
+          break;
+        case "project":
+          await projectGenerator(name);
+          break;
+        default:
+          console.error(
+            `Invalid type specified, '${type}', please choose 'project' or 'library'`
+          );
+          break;
+      }
     })
     .exitOverride();
   try {
