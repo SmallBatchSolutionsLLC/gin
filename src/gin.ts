@@ -19,7 +19,9 @@ async function main(): Promise<void> {
           await projectGenerator(name);
           break;
         default:
-          console.error("need to specify project or library");
+          console.error(
+            `Invalid type specified, '${type}', please choose 'project' or 'library'`
+          );
           break;
       }
     })
