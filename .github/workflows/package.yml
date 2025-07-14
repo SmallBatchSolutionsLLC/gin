@@ -49,7 +49,14 @@ jobs:
       - name: Test Package
         run: |
           npm install -g @smallbatchsolutions/gin
-          smallbatch-gin create testProject
+          smallbatch-gin create project testProject
           cd testProject
           npm run start
           npm run test
+          cd ..
+          smallbatch-gin create library testLibrary
+          npm run build
+          npm test
+          npm start
+          npm link
+          npx ./test-library-1.0.0.tgz
